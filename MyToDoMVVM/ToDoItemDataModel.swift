@@ -23,8 +23,8 @@ class ToDoItemDataModel {
     
     convenience init(title: String){
         
-        self.init(title: title)
-        self.done = false
+        self.init(title: title,done: false)
+        //self.done = false
         
     }
 }

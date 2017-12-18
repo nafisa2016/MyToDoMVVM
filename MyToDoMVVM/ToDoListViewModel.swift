@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+ 
 
 protocol GetListOperation {
     func getList()
@@ -25,10 +27,19 @@ class ToDoListViewModel  {
     
     //core data handler delegate
     weak var coreDatahandlerDelegate: CoreDataHandlerProtocol? = nil
-    let coreDataHandler = CoreDataHandler()
+    
+
+    let context: NSManagedObjectContext!
+    
+    let coreDataHandler : CoreDataHandler
     
     //UI handler delegate
     weak var handleUIDelegate: HandleUI? = nil
+    
+    init(context: NSManagedObjectContext){
+        self.context = context
+        coreDataHandler = CoreDataHandler(context: context)
+    }
     
 }
 

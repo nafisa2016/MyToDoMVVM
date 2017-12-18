@@ -18,6 +18,8 @@
 		78F675491FE4C7AF00063463 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F675481FE4C7AF00063463 /* ToDoListViewModel.swift */; };
 		78F6754C1FE5333C00063463 /* ListCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78F6754A1FE5333C00063463 /* ListCoreDataModel.xcdatamodeld */; };
 		78F6754E1FE5FC9900063463 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6754D1FE5FC9900063463 /* CoreDataHandler.swift */; };
+		78F675501FE72E2C00063463 /* ToDoItemDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6754F1FE72E2C00063463 /* ToDoItemDataModelTests.swift */; };
+		78F675521FE7381E00063463 /* CoreDataHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F675511FE7381E00063463 /* CoreDataHandlerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		78F675481FE4C7AF00063463 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		78F6754B1FE5333C00063463 /* ListCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		78F6754D1FE5FC9900063463 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
+		78F6754F1FE72E2C00063463 /* ToDoItemDataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemDataModelTests.swift; sourceTree = "<group>"; };
+		78F675511FE7381E00063463 /* CoreDataHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandlerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 			children = (
 				78F675271FE4C63F00063463 /* MyToDoMVVMTests.swift */,
 				78F675291FE4C63F00063463 /* Info.plist */,
+				78F6754F1FE72E2C00063463 /* ToDoItemDataModelTests.swift */,
+				78F675511FE7381E00063463 /* CoreDataHandlerTests.swift */,
 			);
 			path = MyToDoMVVMTests;
 			sourceTree = "<group>";
@@ -284,6 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F675501FE72E2C00063463 /* ToDoItemDataModelTests.swift in Sources */,
+				78F675521FE7381E00063463 /* CoreDataHandlerTests.swift in Sources */,
 				78F675281FE4C63F00063463 /* MyToDoMVVMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

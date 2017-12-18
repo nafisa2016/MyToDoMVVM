@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol HandleUI : class {
     func showItemEXistsAlert()
@@ -14,7 +15,7 @@ protocol HandleUI : class {
 
 class ToDoTableViewController: UITableViewController {
     
-    lazy var toDOListViewModel  = ToDoListViewModel()
+    lazy var toDOListViewModel  = ToDoListViewModel(context:  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     
     override func viewDidLoad() {
         super.viewDidLoad()
