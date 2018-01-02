@@ -9,7 +9,9 @@
 import XCTest
 
 class MyToDoMVVMUITests: XCTestCase {
-        
+    
+    let app = XCUIApplication()
+    
     override func setUp() {
         super.setUp()
         
@@ -28,9 +30,85 @@ class MyToDoMVVMUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testToDoViewControllerTitle(){
+        
+        XCTAssert(app.navigationBars["To Do"].exists)
     }
     
+    func testToDoViewControllerAddButton(){
+        
+        XCTAssert(app.navigationBars["To Do"].buttons["Add"].exists)
+    }
+    
+    func testToDoTableExists(){
+        
+        let table = app.tables.element
+        XCTAssertTrue(table.exists)
+    }
+    
+    func testDeleteItem(){
+        
+        let addButton = app.navigationBars["To Do"].buttons["Add"]
+        addButton.tap()
+        
+        let newToDoItemAlert = app.alerts["New To Do item"]
+        let textField = newToDoItemAlert.collectionViews.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element
+        textField.typeText("a")
+        
+        let okButton = newToDoItemAlert.buttons["OK"]
+        okButton.tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery.staticTexts["a"].swipeLeft()
+        tablesQuery.buttons["Delete"].tap()
+        XCTAssert(app.tables.cells.count == 0)
+        
+    }
+    
+    func testDuplicateItemAlert(){
+        
+        let addButton = app.navigationBars["To Do"].buttons["Add"]
+        addButton.tap()
+        
+        let newToDoItemAlert = app.alerts["New To Do item"]
+        let textField = newToDoItemAlert.collectionViews.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element
+        textField.typeText("a")
+        
+        let okButton = newToDoItemAlert.buttons["OK"]
+        okButton.tap()
+        
+        XCTAssertNotNil(app.alerts["Duplicate item"].exists)
+        
+        //app.alerts["Duplicate item"].buttons["OK"].tap()
+    }
+    
+    func testInsertToDoItem(){
+        
+        let addButton = app.navigationBars["To Do"].buttons["Add"]
+        addButton.tap()
+        
+        let newToDoItemAlert = app.alerts["New To Do item"]
+        let textField = newToDoItemAlert.collectionViews.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element
+        textField.typeText("a")
+        
+        let okButton = newToDoItemAlert.buttons["OK"]
+        okButton.tap()
+        
+        XCTAssertNotNil(app.tables.staticTexts["a"].exists)
+        
+    }
+    
+    func testUpdateItem(){
+        
+        app.navigationBars["To Do"].buttons["Add"].tap()
+        
+        let newToDoItemAlert = app.alerts["New To Do item"]
+    newToDoItemAlert.collectionViews.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element.typeText("a")
+        newToDoItemAlert.buttons["OK"].tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["a"]/*[[".cells.staticTexts[\"a\"]",".staticTexts[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssertNotNil(tablesQuery.buttons["More Info"].exists)
+    }
 }

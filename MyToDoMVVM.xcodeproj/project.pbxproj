@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78CD99E71FFB1AEA001EFF79 /* ToDoTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD99E61FFB1AEA001EFF79 /* ToDoTableViewControllerTests.swift */; };
 		78F675131FE4C63F00063463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F675121FE4C63F00063463 /* AppDelegate.swift */; };
 		78F675181FE4C63F00063463 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F675161FE4C63F00063463 /* Main.storyboard */; };
 		78F6751A1FE4C63F00063463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F675191FE4C63F00063463 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78CD99E61FFB1AEA001EFF79 /* ToDoTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewControllerTests.swift; sourceTree = "<group>"; };
 		78F6750F1FE4C63F00063463 /* MyToDoMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyToDoMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F675121FE4C63F00063463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F675171FE4C63F00063463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78CD99E31FFB1061001EFF79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78F675461FE4C73300063463 /* ToDoItemDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		78CD99E41FFB106B001EFF79 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				78F675481FE4C7AF00063463 /* ToDoListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		78CD99E51FFB107F001EFF79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78F675441FE4C6F500063463 /* ToDoTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		78F675061FE4C63E00063463 = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +140,10 @@
 				78F675191FE4C63F00063463 /* Assets.xcassets */,
 				78F6751B1FE4C63F00063463 /* LaunchScreen.storyboard */,
 				78F6751E1FE4C63F00063463 /* Info.plist */,
-				78F675441FE4C6F500063463 /* ToDoTableViewController.swift */,
+				78CD99E51FFB107F001EFF79 /* View */,
 				78F6754A1FE5333C00063463 /* ListCoreDataModel.xcdatamodeld */,
-				78F675461FE4C73300063463 /* ToDoItemDataModel.swift */,
-				78F675481FE4C7AF00063463 /* ToDoListViewModel.swift */,
+				78CD99E31FFB1061001EFF79 /* Model */,
+				78CD99E41FFB106B001EFF79 /* ViewModel */,
 				78F6754D1FE5FC9900063463 /* CoreDataHandler.swift */,
 			);
 			path = MyToDoMVVM;
@@ -130,6 +156,7 @@
 				78F675291FE4C63F00063463 /* Info.plist */,
 				78F6754F1FE72E2C00063463 /* ToDoItemDataModelTests.swift */,
 				78F675511FE7381E00063463 /* CoreDataHandlerTests.swift */,
+				78CD99E61FFB1AEA001EFF79 /* ToDoTableViewControllerTests.swift */,
 			);
 			path = MyToDoMVVMTests;
 			sourceTree = "<group>";
@@ -291,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78F675501FE72E2C00063463 /* ToDoItemDataModelTests.swift in Sources */,
+				78CD99E71FFB1AEA001EFF79 /* ToDoTableViewControllerTests.swift in Sources */,
 				78F675521FE7381E00063463 /* CoreDataHandlerTests.swift in Sources */,
 				78F675281FE4C63F00063463 /* MyToDoMVVMTests.swift in Sources */,
 			);
@@ -451,7 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 42KMS8LBB5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyToDoMVVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nafisa.MyToDoMVVM;
@@ -466,7 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 42KMS8LBB5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyToDoMVVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nafisa.MyToDoMVVM;

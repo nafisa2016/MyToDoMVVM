@@ -19,16 +19,16 @@ class CoreDataHandlerTests: XCTestCase {
         let container = NSPersistentContainer(name: "ListCoreDataModel")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
-        description.shouldAddStoreAsynchronously = false // Make it simpler in test env
+        description.shouldAddStoreAsynchronously = false
         
         container.persistentStoreDescriptions = [description]
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
             
-            // Check if creating container wrong
+            // Check if error
             if let error = error {
-                fatalError("Create an in-mem coordinator failed \(error)")
+                fatalError("error \(error)")
             }
         }
         return container
@@ -37,7 +37,6 @@ class CoreDataHandlerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
         
         let context = mockPersistantContainer.viewContext
         sut = CoreDataHandler(context: context)
@@ -49,52 +48,41 @@ class CoreDataHandlerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInsert() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        var insertResult = sut.insertItem(title: "b1", done: false)
+    
+    func testCoreDataOperations() {
         
+        //test insert
+        var insertResult = sut.insertItem(title: "b1", done: false)
         XCTAssertEqual(insertResult, true, "Not inserted")
         
         insertResult = sut.insertItem(title: "b2", done: false)
-        
         XCTAssertEqual(insertResult, true, "Not inserted")
         
         insertResult = sut.insertItem(title: "b3", done: false)
-        
         XCTAssertEqual(insertResult, true, "Not inserted")
         
         insertResult = sut.insertItem(title: "b4", done: false)
-        
         XCTAssertEqual(insertResult, true, "Not inserted")
         
         insertResult = sut.insertItem(title: "b5", done: false)
-        
         XCTAssertEqual(insertResult, true, "Not inserted")
         
-//        let exists = sut.checkItemExist(title: "ppp")
-//
-//        XCTAssertEqual(exists, true, "item doesn't exist")
+        //test fetch all
+        var allItems = sut.fetchAllItems()
+        XCTAssertEqual(allItems.count, 5, "count incorrect")
         
-        let allItems = sut.fetchAllItems()
-        
+        //test delete
+        sut.deleteItem(title: "b5")
+        allItems = sut.fetchAllItems()
         XCTAssertEqual(allItems.count, 4, "count incorrect")
+        
+        //test update
+        sut.updateItem(title: "b4", done: true)
+        
         
     }
     
-//    func testItem(){
-//
-//        let exists = sut.checkItemExist(title: "pp")
-//
-//        XCTAssertEqual(exists, true, "item doesn't exist")
-//    }
-//
-//    func testFetchAll(){
-//
-//        let allItems = sut.fetchAllItems()
-//
-//        XCTAssertEqual(allItems.count, 1, "count incorrect")
-//    }
+
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

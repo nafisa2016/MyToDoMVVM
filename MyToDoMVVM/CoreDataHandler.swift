@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-protocol CoreDataHandlerProtocol: class {
+@objc protocol CoreDataHandlerProtocol: class {
     
     func insertItem(title: String,done:Bool) -> Bool
     func fetchAllItems()-> [Item]
@@ -26,12 +26,6 @@ class CoreDataHandler: CoreDataHandlerProtocol {
         self.context = context
     }
     
-    //MARK:- get context
-//    func getContext () -> NSManagedObjectContext {
-//
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        return appDelegate.persistentContainer.viewContext
-//    }
     
     //MARK:- insert an item
     func insertItem(title: String,done:Bool) -> Bool{
@@ -40,7 +34,6 @@ class CoreDataHandler: CoreDataHandlerProtocol {
             //show alert
             return false
         }else {
-            //let context = getContext()
             
             let item = Item(context: context)
             item.title = title
@@ -59,8 +52,6 @@ class CoreDataHandler: CoreDataHandlerProtocol {
     func checkItemExist(title: String)->Bool {
         
         var exists = false
-        
-//        let context = getContext()
         
         let fetchedRequest = NSFetchRequest<Item>(entityName: "Item")
         
@@ -89,7 +80,6 @@ class CoreDataHandler: CoreDataHandlerProtocol {
         var items = [Item]()
         
         do {
-//            let context = getContext()
             
             let fetchrequest = NSFetchRequest<Item>(entityName: "Item")
             
@@ -105,8 +95,6 @@ class CoreDataHandler: CoreDataHandlerProtocol {
     
     //MARK:- update an item
     func updateItem(title: String,done: Bool){
-        
-//        let context = getContext()
         
         let fetchedRequest = NSFetchRequest<Item>(entityName: "Item")
         
@@ -139,8 +127,6 @@ class CoreDataHandler: CoreDataHandlerProtocol {
     
     //MARK:- delete an item
     func deleteItem(title: String){
-        
-//        let context = getContext()
         
         let fetchedRequest = NSFetchRequest<Item>(entityName: "Item")
         

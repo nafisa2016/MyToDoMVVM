@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol HandleUI : class {
+@objc protocol HandleUI : class {
     func showItemEXistsAlert()
 }
 
@@ -25,10 +25,13 @@ class ToDoTableViewController: UITableViewController {
         
         //MARK:- large title
         if #available(iOS 11.0, *) {
+            
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationBar.topItem?.title = "To Do"
             navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+            
         } else {
+            
             navigationController?.navigationBar.topItem?.title = "To Do"
         }
         
@@ -48,18 +51,19 @@ class ToDoTableViewController: UITableViewController {
     // MARK: - Table view data source
     //MARK: no of section
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return toDOListViewModel.getSection()
     }
     
     //MARK: no of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return toDOListViewModel.getItems()
     }
     
     //MARK:- configure a cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         // Configure the cell...
@@ -77,21 +81,20 @@ class ToDoTableViewController: UITableViewController {
         
         // Create an alert
         let alert = UIAlertController(
-            title: "New to-do item",
-            message: "Insert the title of the new to-do item:",
+            title: "New To Do item",
+            message: "Insert a new to-do item",
             preferredStyle: .alert)
         
-        // Add a text field to the alert for the new item's title
+        // Add a text field to the alert
         alert.addTextField(configurationHandler: nil)
         
-        // Add a "cancel" button to the alert. This one doesn't need a handler
+        // Add a cancel button to the alert
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        // Add a "OK" button to the alert. The handler calls addNewToDoItem()
+        // Add OK button to the alert.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
             if let title = alert.textFields?[0].text
             {
-                // self.addNewToDoItem(title: title)
                 let inserted = self.toDOListViewModel.addItem(title: title)
                 
                 if inserted {
@@ -132,6 +135,7 @@ class ToDoTableViewController: UITableViewController {
     
 }
 
+//MARK:- conform to HandleUI protocol
 extension ToDoTableViewController : HandleUI {
     
     func showItemEXistsAlert(){

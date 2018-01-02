@@ -8,9 +8,10 @@
 
 import Foundation
 import CoreData
- 
 
-protocol GetListOperation {
+
+@objc protocol GetListOperation {
+    
     func getList()
     func getRowDataTitle(row: Int)->String
     func getRowDataDone(row: Int)->Bool
@@ -22,15 +23,13 @@ protocol GetListOperation {
 
 class ToDoListViewModel  {
     
-    //MARK:- all list items
+    //MARK:- declarations
     private var myList: [ToDoItemDataModel] = []
     
     //core data handler delegate
     weak var coreDatahandlerDelegate: CoreDataHandlerProtocol? = nil
     
-
     let context: NSManagedObjectContext!
-    
     let coreDataHandler : CoreDataHandler
     
     //UI handler delegate
@@ -43,6 +42,7 @@ class ToDoListViewModel  {
     
 }
 
+//MARK:- conform to GetListOperation protocol
 extension ToDoListViewModel : GetListOperation {
     
     //MARK:- Get all list items from Core Data
@@ -59,11 +59,13 @@ extension ToDoListViewModel : GetListOperation {
     
     //MARK:- Get title for an item
     func getRowDataTitle(row: Int)->String {
+        
         return (myList[row].title )
     }
     
     //MARK:- Get done for an item
     func getRowDataDone(row: Int)->Bool {
+        
         return (myList[row].done )
     }
     
@@ -81,11 +83,13 @@ extension ToDoListViewModel : GetListOperation {
     
     //MARK:- get section
     func getSection() -> Int {
+        
         return 1
     }
     
     //MARK:- get items
     func getItems()->Int {
+        
         return myList.count  
     }
     
