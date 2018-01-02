@@ -55,7 +55,7 @@ class ToDoTableViewControllerTests: XCTestCase {
     }
     
     func testToDoTableViewControllerBarButton(){
-    XCTAssertNotNil(toDoTableViewController.navigationController?.navigationBar.topItem?.rightBarButtonItem)
+        XCTAssertNotNil(toDoTableViewController.navigationController?.navigationBar.topItem?.rightBarButtonItem)
        
     }
     

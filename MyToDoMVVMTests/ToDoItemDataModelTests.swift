@@ -32,7 +32,6 @@ class ToDoItemDataModelTests: XCTestCase {
     func testConVenienceInit(){
         
         let toDoItem1: ToDoItemDataModel = ToDoItemDataModel(title: "work")
-        
         let toDOItem2 : ToDoItemDataModel = ToDoItemDataModel(title: "work", done: false)
         
         XCTAssertEqual(toDoItem1.title, toDOItem2.title, "init not correct")

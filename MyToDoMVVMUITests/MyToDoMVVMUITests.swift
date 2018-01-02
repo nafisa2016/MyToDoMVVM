@@ -107,7 +107,7 @@ class MyToDoMVVMUITests: XCTestCase {
         newToDoItemAlert.buttons["OK"].tap()
         
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["a"]/*[[".cells.staticTexts[\"a\"]",".staticTexts[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery.staticTexts["a"].tap()
         
         XCTAssertNotNil(tablesQuery.buttons["More Info"].exists)
     }

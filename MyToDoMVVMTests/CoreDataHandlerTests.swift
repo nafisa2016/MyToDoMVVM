@@ -79,10 +79,7 @@ class CoreDataHandlerTests: XCTestCase {
         //test update
         sut.updateItem(title: "b4", done: true)
         
-        
     }
-    
-
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
